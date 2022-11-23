@@ -18,6 +18,19 @@ int max(int a,int b){
         r=a-(i*z);
         return r;
 }
+int min(int a[],int n){
+        int min=a[0];
+        for(int i=1;i<n;i++){
+                if(min>a[i]){min=a[i];}
+        }
+        return min;
+}
+int mid(int a[],int n){
+        int c=min(a,n);
+        int d=a[0];
+        for(int i=1;i<n;i++){d=max(d,a[i]);}
+        return d-c;
+}
 int mode(int a[],int n){
         int r=0,s=0;int v[n];
         for(int i=0;i<n;i++){v[i]=0;}
@@ -30,10 +43,9 @@ int mode(int a[],int n){
                         }
                 }
         }
-        // for(int i=0;i<n;i++){printf("%d ",v[i]);}
         r=v[0];
         for(int i=1;i<n;i++){
-            if(r<v[i]){r=v[i];s=i;}
+                if(r<v[i]){r=v[i];s=i;}
         }
         if(r==2){printf("Bimodal..\n");}
         if(r==3){printf("Trimodal...\n");}
@@ -45,12 +57,6 @@ int main(){
         printf("Mean of array is: %d\n",mean(a,n));
         printf("Median of array is: %d\n",median(a,n));
         printf("Mode of array is: %d\n",mode(a,n));
+        printf("Mid range of array is: %d\n",mid(a,n));
         return 0;
 }
-
-Output:
-
-Mean of array is: 29
-Median of array is: 25
-Trimodal...
-Mode of array is: 25
