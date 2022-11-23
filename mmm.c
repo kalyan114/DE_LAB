@@ -12,11 +12,18 @@ int median(int a[],int n){
         else{res=((a[n/2]+a[n/2+1])/2);}
         return res;
 }
-int max(int a,int b){
+int mx(int a,int b){
         int i,z,r;
         z=a-b;i=(z>>31)&1;
         r=a-(i*z);
         return r;
+}
+int max(int a[],int n){
+        int max=a[0];
+        for(int i=1;i<n;i++){
+                if(max<a[i]){max=a[i];}
+        }
+        return max;
 }
 int min(int a[],int n){
         int min=a[0];
@@ -28,18 +35,18 @@ int min(int a[],int n){
 int mid(int a[],int n){
         int c=min(a,n);
         int d=a[0];
-        for(int i=1;i<n;i++){d=max(d,a[i]);}
+        for(int i=1;i<n;i++){d=mx(d,a[i]);}
         return d-c;
 }
 int fq(int a[],int n){
-    int t[n/2];
-    for(int i=0;i<n/2;i++){t[i]=a[i];}
-    return median(t,n/2);
+        int t[n/2];
+        for(int i=0;i<n/2;i++){t[i]=a[i];}
+        return median(t,n/2);
 }
 int tq(int a[],int n){
-    int t[n/2];
-    for(int i=0;i<n/2;i++){t[i]=a[n/2+i];}
-    return median(t,n/2);
+        int t[n/2];
+        for(int i=0;i<n/2;i++){t[i]=a[n/2+i];}
+        return median(t,n/2);
 }
 int mode(int a[],int n){
         int r=0,s=0;int v[n];
@@ -70,5 +77,17 @@ int main(){
         printf("Mid range of array is: %d\n",mid(a,n));
         printf("First quartile of array is: %d\n",fq(a,n));
         printf("Third quartile of array is: %d\n",tq(a,n));
+        printf("Five summary of array is: %d,%d,%d,%d,%d\n",min(a,n),fq(a,n),median(a,n),tq(a,n),max(a,n));
         return 0;
 }
+
+Output:
+
+Mean of array is: 29
+Median of array is: 25
+Trimodal...
+Mode of array is: 25
+Mid range of array is: 57
+First quartile of array is: 20
+Third quartile of array is: 35
+Five summary of array is: 13,20,25,35,70
