@@ -31,6 +31,16 @@ int mid(int a[],int n){
         for(int i=1;i<n;i++){d=max(d,a[i]);}
         return d-c;
 }
+int fq(int a[],int n){
+    int t[n/2];
+    for(int i=0;i<n/2;i++){t[i]=a[i];}
+    return median(t,n/2);
+}
+int tq(int a[],int n){
+    int t[n/2];
+    for(int i=0;i<n/2;i++){t[i]=a[n/2+i];}
+    return median(t,n/2);
+}
 int mode(int a[],int n){
         int r=0,s=0;int v[n];
         for(int i=0;i<n;i++){v[i]=0;}
@@ -58,5 +68,7 @@ int main(){
         printf("Median of array is: %d\n",median(a,n));
         printf("Mode of array is: %d\n",mode(a,n));
         printf("Mid range of array is: %d\n",mid(a,n));
+        printf("First quartile of array is: %d\n",fq(a,n));
+        printf("Third quartile of array is: %d\n",tq(a,n));
         return 0;
 }
